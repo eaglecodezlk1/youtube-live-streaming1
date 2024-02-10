@@ -1,0 +1,26 @@
+name: Download MP3 File
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Download MP3 file
+      run: |
+        curl -L -o audio.mp3 "YOUR_MP3_FILE_URL_HERE"
+    
+    - name: Add MP3 file to repository
+      run: |
+        git config --global user.name 'Your Name'
+        git config --global user.email 'youremail@example.com'
+        git add audio.mp3
+        git commit -m "Add audio.mp3"
+        git push
