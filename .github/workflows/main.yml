@@ -1,0 +1,26 @@
+name: Download MP3 File
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Download MP3 file
+      run: |
+        curl -L -o audio.mp3 "https://dl150.filemate5.shop/?file=M3R4SUNiN3JsOHJ6WWQ3aTdPRFA4NW1rRVJIOGxQc3RsTmx4NEJFdUNLVkxpb0lwM3ErTkt0RUVmK3dId3Ard1d0dFEvQ3JSZnQ3RlBSL2E4SjR2VG5hKzU5Y3BzV0tLb2FnNVZ0eGxReFQ5M3JTRm15RWx6RlhUS1oyZk02MU1WU0ZXdGcxdzhDQ3lndnpFNmxQL3RuTHdpMmJGYVR3YXV5a09LZnpkOU1JWmdqbWNPcUt4aDhCVjZ6U2E1S1ZLMHZXZXYxeW5oYUVvNWRoM0R4UT0%3D"
+    
+    - name: Add MP3 file to repository
+      run: |
+        git config --global user.name 'Your Name'
+        git config --global user.email 'youremail@example.com'
+        git add audio.mp3
+        git commit -m "Add audio.mp3"
+        git push
